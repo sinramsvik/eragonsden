@@ -1,0 +1,24 @@
+@import "typography";
+@import "variables";
+@import "node_modules/bulma/bulma";
+
+html {
+  background-color: $background;
+}
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+p {
+  font-size: $primary-f-size;
+} 
+hr {
+  background-color: $secondary;
+  height: 1px;
+}
+.spacer {
+  padding-bottom: 36px;
+}
+a {
+  color: $text-link;
+}

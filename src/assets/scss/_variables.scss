@@ -1,0 +1,28 @@
+
+// Override initial variables here
+// You can add new ones or update existing ones:
+
+$text: #222 !default;
+$text-light: #444 !default;
+$title-color: $text;
+$subtext-gray: #63707E;
+$text-link: $subtext-gray;
+
+$body-size: 16px;
+
+$family-sans: 'SohneWeb', 'Helvetica', 'Arial', sans-serif;
+$family-sans-serif: $family-sans;
+$family-primary: $family-sans; // Use the new serif family
+
+$background: #f2f2f2;
+
+$primary: #222;
+$secondary: #c4c4c4;
+
+// Override generated variables here
+// For example, by default, the $danger color is $red and the font is sans-serif
+// You can change these values:
+
+//text sizes: 
+$primary-f-size: 14px;
+$small-f-size: 12px;
