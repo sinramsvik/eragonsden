@@ -1,10 +1,14 @@
 <template>
   <section class="columns">
     <div class="column is-4 scroll rows">
-      <clients class="row" v-for="(row,index) in table" :key="index" :client="row.client" :photo="row['photo-url']" :body="row.clientBody">
+      <clients class="row" @hover="setProject" v-for="(row,index) in table" :key="index" :index="index" :client="row.client">
       </clients>
     </div>
-    <portal-target class="column is-offset-3" name="destination"></portal-target>
+    <div class="column is-offset-3" v-if="project">
+      <img :src="project['photo-url']" />
+      <h1>{{ project.client }}</h1>
+      <p>{{ project.clientBody }}</p>
+    </div>
   </section>
 </template>
 
@@ -15,7 +19,8 @@ export default {
   components: { Clients },
   data () {
     return {
-      table: []
+      table: [],
+      project: null
     }
   },
 
@@ -30,6 +35,11 @@ export default {
   methods: {
     showInfo(data,tabletop) {
       this.table = (tabletop.sheets('work').elements)
+    },
+
+    setProject ({ index }) {
+      let item = this.table[index]
+      this.project = item
     }
   }
 }
@@ -39,8 +49,8 @@ export default {
   @import "../assets/scss/variables.scss";
 
   div.scroll {
-    height: 100vh;
+    height: 80vh;
     overflow-y: scroll;
-  }
+  }  
 
 </style>

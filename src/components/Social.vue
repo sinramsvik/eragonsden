@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div v-for="(row, index) in table" :key="index">
+  <div class="columns">
+    <div class="column" v-for="(row,index) in table" :key="index">
       <a :href="row.socialUrl">{{ row.social }}</a>
     </div>
   </div>
@@ -9,6 +9,10 @@
 <script>
 import Tabletop from 'tabletop'
 export default {
+  props: {
+    url: String,
+    title: String
+  },
   data () {
     return {
       table: []

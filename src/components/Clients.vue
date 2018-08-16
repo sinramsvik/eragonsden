@@ -1,23 +1,24 @@
 <template>
   <div>
-    <p class="client" @mouseover="open = !open">{{ client }}</p>
-    <portal class="aside" to="destination" v-if="open">
-      <img :src="photo" />
-      <p>{{ body }}</p>
-    </portal>
+    <p class="client" @mouseover="toggle">{{ client }}</p>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    client: String,
-    photo: String,
-    body: String
+    index: Number,
+    client: String
   },
   data () {
     return {
       open: false
+    }
+  },
+  methods: {
+    toggle () {
+      this.$emit('hover', { index: this.index })
+      this.open = true
     }
   }
 }
@@ -25,10 +26,7 @@ export default {
 
 <style lang="scss">
   
-  .aside {
-    width: 520px;
-    height: 520px;
-  }
+
   .hidden {
     display: none;
   }

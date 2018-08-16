@@ -1,11 +1,13 @@
 <template>
-    <header class="level columns">
-      <div class="level-left column" v-for="(row,index) in table" :key="index">
+  <header class="rows">
+    <div class="row columns" v-for="(row,index) in table" :key="index">
+      <div class="column is-two-thirds">
         <img src="../assets/icons/logo.svg" />
         <h2>{{ row.subHeader }}</h2>
       </div>
-      <social class="level-right justified"></social>
-    </header>
+      <social class="column is-1"></social>
+    </div>
+  </header>
 </template>
 
 <script>
@@ -29,7 +31,7 @@ export default {
 
   methods: {
     showInfo(data,tabletop) {
-      this.table = (tabletop.sheets('header').elements)
+      this.table = (tabletop.sheets('header','contact').elements)
     }
   }
 }
@@ -38,11 +40,8 @@ export default {
 <style lang="scss" scoped>
   @import "../assets/scss/variables.scss";
 
-  .level-left h2 {
+  h2 {
     color: $subtext-gray;
-  }
-  .justified {
-    justify-content: top;
   }
 </style>
 
