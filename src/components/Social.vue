@@ -8,7 +8,6 @@
 
 <script>
 import Tabletop from 'tabletop'
-import _ from 'lodash'
 export default {
   data () {
     return {
@@ -26,7 +25,7 @@ export default {
 
   methods: {
     showInfo(data,tabletop) {
-      this.table = _.compact(tabletop.sheets('contact').elements)
+      this.table = (tabletop.sheets('contact').elements)
     }
   }
 }

@@ -11,7 +11,6 @@
 <script>
 import Social from './Social.vue'
 import Tabletop from 'tabletop'
-import _ from 'lodash'
 export default {
   components: { Social },
   data () {
@@ -30,7 +29,7 @@ export default {
 
   methods: {
     showInfo(data,tabletop) {
-      this.table = _.compact(tabletop.sheets('header').elements)
+      this.table = (tabletop.sheets('header').elements)
     }
   }
 }

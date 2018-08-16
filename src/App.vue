@@ -24,6 +24,7 @@ export default {
 
 <style lang="scss">
   @import '/assets/scss/app';
+
   .margins {
     margin: 55px 80px;
   }
