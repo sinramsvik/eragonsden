@@ -1,36 +1,38 @@
 <template>
   <div class="columns">
-    <div class="column" v-for="(row,index) in table" :key="index">
-      <a :href="row.socialUrl">{{ row.social }}</a>
+    <div class="column" v-for="(entry,index) in entries" :key="index">
+      <a :href="entry.gsx$socialurl.$t">{{ entry.gsx$social.$t }}</a>
     </div>
   </div>
 </template>
 
 <script>
-import Tabletop from 'tabletop'
 export default {
-  props: {
-    url: String,
-    title: String
-  },
   data () {
     return {
-      table: []
+      entries: null
     }
   },
 
-  mounted () {
-    Tabletop.init({  
-      key: '1W-xMb9P4Xpnn4iOKgDsA7H1dzwED_Jm3gqewoIpzHGo',
-      callback: this.showInfo,
-      simpleSheet: true 
-    })
+  watch: {
+    currentPage: 'fetchData'
+  },
+
+  created () {
+    this.fetchData()
   },
 
   methods: {
-    showInfo(data,tabletop) {
-      this.table = (tabletop.sheets('contact').elements)
-    }
+    fetchData() {
+      let xhr = new XMLHttpRequest()
+      let self = this
+      xhr.open('GET','https://spreadsheets.google.com/feeds/list/1W-xMb9P4Xpnn4iOKgDsA7H1dzwED_Jm3gqewoIpzHGo/3/public/values?alt=json')
+      xhr.onload = function () {
+        let response = JSON.parse(xhr.responseText)
+        self.entries = response.feed.entry
+      }
+      xhr.send()
+    },
   }
 }
 </script>
