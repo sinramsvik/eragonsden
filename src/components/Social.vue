@@ -1,7 +1,7 @@
 <template>
   <div class="columns">
     <div class="column" v-for="(entry,index) in entries" :key="index">
-      <a :href="entry.gsx$socialurl.$t">{{ entry.gsx$social.$t }}</a>
+      <a :href="entry.fields.socialUrl">{{ entry.fields.social }}</a>
     </div>
   </div>
 </template>
@@ -26,10 +26,10 @@ export default {
     fetchData() {
       let xhr = new XMLHttpRequest()
       let self = this
-      xhr.open('GET','https://spreadsheets.google.com/feeds/list/1W-xMb9P4Xpnn4iOKgDsA7H1dzwED_Jm3gqewoIpzHGo/3/public/values?alt=json')
+      xhr.open('GET','https://api.airtable.com/v0/appudoYlR0W35iwUx/contact?api_key=keyNazOMJHA5IFSJw')
       xhr.onload = function () {
         let response = JSON.parse(xhr.responseText)
-        self.entries = response.feed.entry
+        self.entries = response.records
       }
       xhr.send()
     },
